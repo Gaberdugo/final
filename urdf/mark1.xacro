@@ -164,12 +164,12 @@
 
     </link>
 
-    <joint name="joint_3" type="fixed">
+    <joint name="joint_3" type="revolute">
         <origin rpy="0 0 0" xyz="0.1493 0.0 -0.089"/>
         <parent link="right_leg_rocker"/>
         <child link="right_leg_boogie"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit lower="-0.523" upper="0.523" effort="1.0" velocity="1.0"/>
+        <limit lower="-0.523" upper="0.523" effort="1.0" velocity="0.5"/>
     </joint>
 
     <link name="right_leg_boogie">
@@ -227,12 +227,12 @@
 
     </link>
 
-    <joint name="joint_4" type="fixed">
+    <joint name="joint_4" type="revolute">
         <origin rpy="0 0 0" xyz="0.1493 0.0 -0.089"/>
         <parent link="left_leg_rocker"/>
         <child link="left_leg_boogie"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit lower="-0.523" upper="0.523" effort="1.0" velocity="1.0"/>
+        <limit lower="-0.523" upper="0.523" effort="1.0" velocity="0.5"/>
     </joint>
 
     <link name="left_leg_boogie">
@@ -295,7 +295,7 @@
         <parent link="right_leg_boogie"/>
         <child link="right_wheel_front"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="100.0" velocity="15.0"/>
+        <limit effort="1000.0" velocity="150.0"/>
     </joint>
 
     <link name="right_wheel_front">
@@ -330,7 +330,7 @@
         <parent link="right_leg_boogie"/>
         <child link="right_wheel_medium"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="100.0" velocity="15.0"/>
+        <limit effort="1000.0" velocity="150.0"/>
     </joint>
 
     <link name="right_wheel_medium">
@@ -365,7 +365,7 @@
         <parent link="right_leg_rocker"/>
         <child link="right_wheel_back"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="100.0" velocity="15.0"/>
+        <limit effort="1000.0" velocity="150.0"/>
     </joint>
 
     <link name="right_wheel_back">
@@ -400,7 +400,7 @@
         <parent link="left_leg_boogie"/>
         <child link="left_wheel_front"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="100.0" velocity="15.0"/>
+        <limit effort="1000.0" velocity="150.0"/>
     </joint>
 
     <link name="left_wheel_front">
@@ -435,7 +435,7 @@
         <parent link="left_leg_boogie"/>
         <child link="left_wheel_medium"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="100.0" velocity="15.0"/>
+        <limit effort="1000.0" velocity="150.0"/>
     </joint>
 
     <link name="left_wheel_medium">
@@ -470,7 +470,7 @@
         <parent link="left_leg_rocker"/>
         <child link="left_wheel_back"/>
         <axis xyz="0.0 1.0 0.0"/>
-        <limit effort="100.0" velocity="15.0"/>
+        <limit effort="1000.0" velocity="150.0"/>
     </joint>
 
     <link name="left_wheel_back">       
@@ -623,19 +623,6 @@
         </inertial>
     </link>
 
-    <!-- 6Ruedas 
-    <gazebo>
-      <plugin name="force_based_move_controller" filename="libgazebo_ros_force_based_move.so">
-        <commandTopic>/cmd_vel_raw</commandTopic>
-        <odometryTopic>odom</odometryTopic>
-        <odometryFrame>odom</odometryFrame>
-        <odometryRate>20.0</odometryRate>
-        <robotBaseFrame>chassis</robotBaseFrame>
-        <yaw_velocity_p_gain>250</yaw_velocity_p_gain>
-        <publishOdometryTf>1</publishOdometryTf>
-      </plugin>
-    </gazebo> -->
-
     <!-- Transmission -->
 
     <transmission name="tran1">
@@ -787,6 +774,21 @@
             <frameName>hokuyo_link</frameName>
         </plugin>
         </sensor>
+    </gazebo>
+
+    <!-- Odom -->
+
+    <gazebo>
+        <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>50.0</updateRate>
+            <bodyName>base_footprint</bodyName>
+            <topicName>odom</topicName>
+            <gaussianNoise>0.01</gaussianNoise>
+            <frameName>world</frameName>
+            <xyzOffsets>0 0 0</xyzOffsets>
+            <rpyOffsets>0 0 0</rpyOffsets>
+        </plugin>
     </gazebo>
 
     <!-- Color -->

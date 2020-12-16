@@ -1,77 +1,31 @@
 <sdf version='1.6'>
   <world name='default'>
-    <!--
-    <model name='apollo15_landing_site_1000x1000'>
-      <static>1</static>
-      <link name='link'>
-        <collision name='collision'>
-          <surface>
-            <friction>
-              <ode>
-                <mu>0.2</mu>
-              </ode>
-              <torsional>
-                <ode/>
-              </torsional>
-            </friction>
-            <contact>
-              <ode>
-                <soft_cfm>1</soft_cfm>
-                <kp>100000</kp>
-                <kd>1</kd>
-                <max_vel>1e-06</max_vel>
-                <min_depth>0.02</min_depth>
-              </ode>
-            </contact>
-            <bounce/>
-          </surface>
-          <geometry>
-            <heightmap>
-              <uri>model://apollo15_landing_site_1000x1000/materials/textures/NAC_DTM_APOLLO15_E261N0036_257x257+7472+2152.png</uri>
-              <size>514 514 49</size>
-              <pos>0 0 -45</pos>
-              <texture>
-                <size>10</size>
-                <diffuse>__default__</diffuse>
-                <normal>__default__</normal>
-              </texture>
-              <blend>
-                <min_height>0</min_height>
-                <fade_dist>0</fade_dist>
-              </blend>
-            </heightmap>
-          </geometry>
-          <max_contacts>10</max_contacts>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <heightmap>
-              <texture>
-                <diffuse>model://apollo15_landing_site_1000x1000/materials/textures/AS16-110-18026HR-512x512.jpg</diffuse>
-                <normal>file://media/materials/textures/flat_normal.png</normal>
-                <size>2</size>
-              </texture>
-              <uri>model://apollo15_landing_site_1000x1000/materials/textures/NAC_DTM_APOLLO15_E261N0036_257x257+7472+2152.png</uri>
-              <size>514 514 49</size>
-              <pos>0 0 -45</pos>
-              <blend>
-                <min_height>0</min_height>
-                <fade_dist>0</fade_dist>
-              </blend>
-            </heightmap>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose frame=''>-0.032255 -0.148905 0 0 -0 0</pose>
-    </model> -->
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
     <state world_name='default'>
-      <!--<sim_time>1071 190000000</sim_time>
-      <real_time>80 7822055</real_time>
-      <wall_time>1607996748 27500449</wall_time>
-      <iterations>78093</iterations>-->
+      <sim_time>1278 271000000</sim_time>
+      <real_time>131 273992780</real_time>
+      <wall_time>1608108720 860377153</wall_time>
+      <iterations>127972</iterations>
       <model name='DelZona'>
         <pose frame=''>10.5 13 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -124,17 +78,16 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <!--
-      <model name='apollo15_landing_site_1000x1000'>
-        <pose frame=''>20 -30 0 0 -0 0</pose>
-        <scale>0.5 0.5 1</scale>
+      <model name='ground_plane'>
+        <pose frame=''>-2.14254 0.426341 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>20 -30 0 0 -0 0</pose>
+          <pose frame=''>-2.14254 0.426341 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
-      </model> -->
+      </model>
       <model name='rock1'>
         <pose frame=''>6.86251 21.5637 -0.466686 0 0 -3.14159</pose>
         <scale>1 1 1</scale>
@@ -176,26 +129,36 @@
         </link>
       </model>
       <model name='unit_box_clone'>
-        <pose frame=''>22.1651 27.637 0.698047 0.036214 -0.036036 -1.57181</pose>
+        <pose frame=''>22.1778 27.624 0.359969 0 0 -1.5701</pose>
         <scale>1 2.37096 0.802381</scale>
         <link name='link'>
-          <pose frame=''>22.1651 27.637 0.698047 0.036214 -0.036036 -1.57181</pose>
+          <pose frame=''>22.1778 27.624 0.359969 0 0 -1.5701</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0 0 0 -0 -0 -0</acceleration>
-          <wrench>-0 0 0 0 -0 0</wrench>
+          <acceleration>5.42109 0.903535 11.6133 0.631734 0.648135 -3.14154</acceleration>
+          <wrench>5.42109 0.903535 11.6133 0 -0 0</wrench>
         </link>
       </model>
       <model name='unit_box_clone_clone'>
-        <pose frame=''>19.3559 27.086 0.455462 0.094883 0.023254 -3.13942</pose>
+        <pose frame=''>19.3746 27.0535 0.254207 0 0 -3.10826</pose>
         <scale>1 2.72689 0.567245</scale>
         <link name='link'>
-          <pose frame=''>19.3559 27.086 0.455462 0.094883 0.023254 -3.13942</pose>
+          <pose frame=''>19.3746 27.0535 0.254207 0 0 -3.10826</pose>
           <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-1.3e-05 -0 -1e-05 -3e-06 -5e-05 5e-06</acceleration>
-          <wrench>-1.3e-05 -0 -1e-05 0 -0 0</wrench>
+          <acceleration>-0.424925 3.94922 11.3366 0.172555 -1.47013 -3.14155</acceleration>
+          <wrench>-0.424925 3.94922 11.3366 0 -0 0</wrench>
         </link>
       </model>
+      <light name='user_directional_light_0'>
+        <pose frame=''>19.2284 31.3743 1 0 -0 0</pose>
+      </light>
     </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>6.39224 -13.2181 16.0145 -0 0.670791 1.79013</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
     <model name='DelZona'>
       <pose frame=''>10.5 13 0 0 -0 0</pose>
       <link name='Wall_10'>
@@ -762,7 +725,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.4 0.566888 0.897253</size>
+              <size>0.4 0.566889 0.897253</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -782,7 +745,7 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>0.4 0.566888 0.897253</size>
+              <size>0.4 0.566889 0.897253</size>
             </box>
           </geometry>
           <material>
@@ -797,6 +760,19 @@
         <kinematic>0</kinematic>
       </link>
     </model>
+    <light name='user_directional_light_0' type='directional'>
+      <pose frame=''>19.2284 31.3743 1 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0.1 0.1 -0.9</direction>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>1</cast_shadows>
+    </light>
     <model name='unit_box_clone_clone'>
       <pose frame=''>19.5176 26.5682 0.549691 0.013755 -0.030143 -1.57144</pose>
       <link name='link'>
@@ -815,7 +791,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.4 0.544429 0.896287</size>
+              <size>0.4 0.54443 0.896286</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -835,7 +811,7 @@
         <visual name='visual'>
           <geometry>
             <box>
-              <size>0.4 0.544429 0.896287</size>
+              <size>0.4 0.54443 0.896286</size>
             </box>
           </geometry>
           <material>
@@ -849,6 +825,55 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
+    </model>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-2.14254 0.426341 0 0 -0 0</pose>
     </model>
   </world>
 </sdf>
